@@ -92,24 +92,29 @@ int main(void){
 
     getTracejado();
 
+    //Mostra as matriculas
     for(int i=0; i<=2; i++){
         printf("Matricula %d -> %d\n", i+1, matriculas[i]);
     }
 
     getTracejado();
-
+    
+    //Mostra o número de cidades
     printf("Quantidade de cidades %d", numCidades);
 
     getTracejado();
 
+    //Mostra a cidade inicial
     printf("Cidade inicial %d", cidadeInicial);
 
     getTracejado();
 
+    //Mostra todos os caminhos possiveis e suas respectivas distancias. Essa função também encontra o menor caminho. 
     permuta(cidades, 0, numCidades - 2, melhorCaminho, &moduloMelhorCaminho, distancias, cidadeInicial);
 
     getTracejado();
 
+    //Mostra a matriz distancias
     printf("Matriz de distancia");
 
     getTracejado();
