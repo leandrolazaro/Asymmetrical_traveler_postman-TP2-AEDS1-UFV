@@ -6,28 +6,30 @@
 void troca(int vetor[], int i, int j);
 void permuta(int vetor[], int inf, int sup, int melhorCaminho[], int *moduloMelhorCaminho, int distancias[], int cidadeInicial);
 int setCidadeinicial(int matriculas[], int numCidades);
-int setCustoCaminho(int cidades[], int **distancias, int tamanhoVetor, int cidadeInicial);
+int setCustoCaminho(int *cidades, int *distancias, int tamanhoVetor, int cidadeInicial);
 void getTracejado(void);
 
-int main(int argc, char *argv[]){
+int main(void){
     int modoInterativo;
     int matriculas[3];
     int cidadeInicial;
     int numCidades;
     int moduloMelhorCaminho;
 
-    scanf("Digite 0 para modo automático e 1 para modo interativo %d\n", &modoInterativo);
-
+    printf("Digite 0 para modo autmático e 1 para modo interativo: ");
+    scanf("%d", &modoInterativo);
     if(modoInterativo==1){
     //---MODO INTERATIVO---
 
         //Obtem os números de matrícula
         for(int i=0; i<=2; i++){
-            scanf("Digite o número de matrícula: %d\n", &matriculas[i]);
+            printf("Digite o %dº número de matrícula: ", i+1);
+            scanf("%d", &matriculas[i]);
         }
 
         //Obtem o número de cidades
-        scanf("Digite o número de cidades: %d\n", &numCidades);
+        printf("Digite o número de cidades: ");
+        scanf("%d", &numCidades);
     
     }else{
     //---MODO AUTOMÁTICO---
@@ -82,23 +84,22 @@ int main(int argc, char *argv[]){
 
     //Definindo um caminho inicial para fins de comparação
     moduloMelhorCaminho=setCustoCaminho(cidades, distancias, numCidades-2, cidadeInicial);
+    
 
     //Vetor com as cidades do melhor caminho
-    int melhorCaminho[numCidades-1];
+    int melhorCaminho[numCidades-2];
 
 
     getTracejado();
 
-    for(int i=3; i<=2; i++){
+    for(int i=0; i<=2; i++){
         printf("Matricula %d -> %d\n", i+1, matriculas[i]);
     }
 
     getTracejado();
-    getTracejado();
 
     printf("Quantidade de cidades %d", numCidades);
 
-    getTracejado();
     getTracejado();
 
     printf("Cidade inicial %d", cidadeInicial);
@@ -144,6 +145,12 @@ void permuta(int vetor[], int inf, int sup, int melhorCaminho[], int *moduloMelh
 	if(inf == sup){
         int somaDistancias=0;
         somaDistancias=setCustoCaminho(vetor, distancias, sup, cidadeInicial);
+        printf("%d ", cidadeInicial);
+        for(int i=0; i<=sup; i++){
+            printf("%d ", vetor[i]);
+        }
+        printf("%d -Distancia ", cidadeInicial);
+        printf("%d\n", somaDistancias);
 
         if(somaDistancias<(*moduloMelhorCaminho)){
             *moduloMelhorCaminho=somaDistancias;
@@ -172,21 +179,21 @@ void troca(int vetor[], int i, int j){
 int setCidadeinicial(int matriculas[], int numCidades){
     int resultado=0;
     for(int i=0; i<=2; i++){
-        resultado+= matriculas[i]/1000;
-        resultado+= (matriculas[i]%1000)/100;
-        resultado+= ((matriculas[i]%1000)/10)%10;
-        resultado+= ((matriculas[i]%1000)%100)%10;
+        resultado+= (int) matriculas[i]/1000;
+        resultado+= (int) (matriculas[i]%1000)/100;
+        resultado+= (int) ((matriculas[i]%1000)/10)%10;
+        resultado+= (int) ((matriculas[i]%1000)%100)%10;
     }
     return (resultado%numCidades);
 }
 
 //Calcula o custo de um caminho composto por uma sequência de cidades
-int setCustoCaminho(int cidades[], int **distancias, int tamanhoVetor, int cidadeInicial){
+int setCustoCaminho(int *cidades, int *distancias, int tamanhoVetor, int cidadeInicial){
     int moduloMelhorCaminho=0;
     for(int i=0; i<tamanhoVetor; i++){
-        moduloMelhorCaminho+=distancias[cidades[i]][cidades[i+1]];
+        moduloMelhorCaminho+=distancias[cidades[i]+cidades[i+1]];
     }
-    moduloMelhorCaminho+=distancias[cidadeInicial][cidades[0]]+distancias[tamanhoVetor][cidadeInicial];
+    moduloMelhorCaminho+=distancias[cidadeInicial+cidades[0]]+distancias[tamanhoVetor+cidadeInicial];
     return moduloMelhorCaminho;
 }
 
