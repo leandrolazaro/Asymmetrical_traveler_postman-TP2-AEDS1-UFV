@@ -153,7 +153,7 @@ int main(void){
 
     for(int i=0; i<=numCidades-1; i++){
         for(int j=0; j<=numCidades-1; j++){
-            printf("%d ", distancias[i][j]);    
+            printf("%2d ", distancias[i][j]);    
         }    
         printf("\n");
     }
