@@ -1,0 +1,48 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat{\fonttbl{\f0\froman\fprq2\fcharset0 Times;}{\f1\froman\fprq2\fcharset0 Times New Roman;}{\f2\froman\fprq2 Times;}{\f3\froman\fprq2\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue0;}
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+\pard\hyphpar0\widctlpar\fi397\sb240\qc\tx720\kerning1\b\f0\fs32\lang1046 Trabalho Pr\'e1tico 2: Problema do Caixeiro Viajante Assim\'e9trico\b0\f1\fs21\par
+
+\pard\hyphpar0\widctlpar\sb240\qc\tx720\b\f0\fs24 Leandro L\'e1zaro (3513), Mateus Pinto (3489), Vin\'edcius J\'falio (3495)\b0\f1\fs21\par
+\f0\fs24 Ci\'eancia da Computa\'e7\'e3o \f2\endash\f0  Universidade Federal de Vi\'e7osa \f2\endash\f0  Campus Florestal (UFV- Caf) \f2\endash\f0  Florestal \f2\endash\f0  MG \f2\endash\f0  Brasil\f1\fs21\par
+\f0\fs24\par
+
+\pard\hyphpar0\widctlpar\sb120\sa120\qc\tx720\f3\fs20\{leandro.lazaro, mateus.p.silva, vinicius.julio\}@ufv.br\f1\fs21\par
+
+\pard\hyphpar0\widctlpar\li454\ri454\sb120\sa120\qj\tx1174\b\i\f0\fs24 Resumo.\b0  Implementamos o Problema do Caixeiro Viajante Assim\'e9trico com o intuito de test\'e1-lo com diferentes tamanhos de entrada para avaliar o seu desempenho baseado no seu tempo de execu\'e7\'e3o.\i0\f1\fs21\par
+
+\pard\keepn\hyphpar0\widctlpar\sb240\tx720\b\f0\fs26 1. Introdu\'e7\'e3o\b0\f1\fs21\par
+
+\pard\hyphpar0\widctlpar\sb120\qj\tx720\f0\fs24 Neste trabalho implementaremos o Problema do Caixeiro Viajante Assim\'e9trico, que envolve o c\'e1lculo do caminho de menor dist\'e2ncia entre N cidades \'e0 serem visitadas pelo Caixeiro por meio de permuta\'e7\'f5es, com o intuito de analisar o desempenho do algoritmo com diferentes n\'fameros de cidades a serem visitadas baseado no seu tempo de execu\'e7\'e3o, que ser\'e1 medido usando comandos do sistema operacional. Ser\'e3o dispon\'edveis formas de entrada manual e autom\'e1tica (por leitura de arquivo) para inserir as cidades e os custos de seus caminhos, al\'e9m da cidade inicial.\f1\fs21\par
+\f0\fs24\par
+\b\fs26 2. Algoritmo de Permuta\'e7\'e3o\b0\f1\fs21\par
+\f0\fs24 O algoritmo calcula todas as possibilidades de caminhos e seus custos usando a fun\'e7\'e3o \i setCustomCaminho\i0  e compara as dist\'e2ncias armazenando a menor na vari\'e1vel \i melhorCaminho\i0 , ou seja, tamb\'e9m encontra o menor caminho.\i\par
+\i0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \f1\fs21\par
+\b\f0\fs26 3. Fun\'e7\'f5es\par
+3.1 Fun\'e7\'e3o troca\par
+\b0 A fun\'e7\'e3o \i troca\i0  tem como objetivo ser auxiliar do algoritmo de permuta\'e7\'e3o. \'c9 utilizada quando \'e9 necess\'e1ria a invers\'e3o de duas posi\'e7\'f5es de um vetor.\par
+\b\par
+3.2. Fun\'e7\'e3o setCidadeinicial\par
+\b0 A fun\'e7\'e3o \i setCidadeinicial\i0  define qual a cidade ser\'e1 o ponto de partida do Caixeiro Viajante baseado no resto da soma dos n\'fameros de matr\'edcula dos integrantes do grupo dividido pelo n\'famero de cidades.\par
+\b\par
+3.3. Fun\'e7\'e3o setCustoCaminho\par
+\b0 A fun\'e7\'e3o \i setCustoCaminho \i0 calcula o custo do caminho a ser percorrido que \'e9 formado por uma sequ\'eancia de cidades.\par
+\b\par
+3.4. Fun\'e7\'e3o getTracejado\par
+\b0 Fun\'e7\'e3o \i getTracejado\i0  imprime um tracejado para melhor organiza\'e7\'e3o da tela do programa.\fs24\par
+\cf1\par
+\b\fs26 4. Programa Principal (main)\cf0\b0\f1\fs21\par
+\cf1\f0\fs24 O Programa Principal \'e9 a implementa\'e7\'e3o do algoritmo de permuta\'e7\'e3o do Problema do Caixeiro Viajante Assim\'e9trico. O algoritmo pode ser utilizado em dois modos: interativo, onde o usu\'e1rio informa as manualmente os dados, e o modo por arquivo, onde os par\'e2metros ser\'e3o passados por meio da leitura de um arquivo contendo as cidades, suas dist\'e2ncias e os n\'fameros de matr\'edcula. Ambos os modos realizam as mesmas opera\'e7\'f5es. O tempo \'e9 calculado pela fun\'e7\'e3o \i clock. \i0 Assim, as informa\'e7\'f5es s\'e3o inseridas, a cidade inicial definida, os caminhos e suas dist\'e2ncias s\'e3o calculadas, e por fim, ap\'f3s as compara\'e7\'f5es, \'e9 definido qual o melhor caminho a ser percorrido, e \'e9 mostrado na tela cada um desses dados.\par
+\cf0\f1\fs21\par
+
+\pard\pagebb\hyphpar0\widctlpar\sb120\qj\tx720\cf1\b\f0\fs26 5. Resultados do Tempo de Execu\'e7\'e3o\cf0\b0\f1\fs21\par
+
+\pard\hyphpar0\widctlpar\sb120\qj\tx720\par
+*/tabela e graf\'edco/*\par
+\cf1\f0\fs24\par
+\b\fs26 6. Considera\'e7\'f5es Finais\cf0\b0\f1\fs21\par
+\cf1\b\i\f0\fs24 */responder \'e0 pergunta \'b4Caso voc\'ea fosse contratado por uma transportadora para desenvolver um sistema que encontrasse a menor rota a ser percorrida por seus caminh\'f5es, saindo e chegando do galp\'e3o de estoque e percorrendo uma \'fanica vez um conjunto de N localidades, voc\'ea utilizaria a solu\'e7\'e3o desenvolvida neste trabalho? Justifique a resposta./*\par
+\b0\i0 A implementa\'e7\'e3o do problema do Caixeiro Viajante Assim\'e9trico nos permitiu estudar sobre o desempenho de um algoritmo de acordo com o seu tempo de execu\'e7\'e3o. Ao analisar o tempo gasto pelo algoritmo de permuta na sua execu\'e7\'e3o, foi percebido um aumento exponencial do mesmo enquanto o n\'famero de cidades testadas aumentava linearmente, o que configura o problema como intrat\'e1vel.\b\i\par
+\cf0\b0\i0\f1\fs21\par
+}
+ 
