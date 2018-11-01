@@ -22,21 +22,23 @@ int main(void){
     char nomeArquivo[30];
     clock_t tempo;
     clock_t tempoArq;
+    
+    FILE * registro = fopen("tempo.csv","a");
 
     printf("Digite 0 para modo autmático e 1 para modo interativo: ");
-    scanf("%d", &modoInterativo);
+    modoInterativo=1;
     if(modoInterativo==1){
     //---MODO INTERATIVO---
 
         //Obtem os números de matrícula
         for(int i=0; i<=2; i++){
             printf("Digite o %dº número de matrícula: ", i+1);
-            scanf("%d", &matriculas[i]);
+            matriculas[i]=1;
         }
 
         //Obtem o número de cidades
         printf("Digite o número de cidades: ");
-        scanf("%d", &numCidades);
+        numCidades=11;
     
         
         distancias = malloc(numCidades * sizeof(int*));
@@ -174,7 +176,7 @@ int main(void){
     
     getTracejado();
 
-     printf("          >>>>>>>>>> Tempo de Cálculo:%f <<<<<<<<<<",(clock() - tempo) / (double)CLOCKS_PER_SEC);
+    fprintf(registro, "%d, %f\n",numCidades, (clock() - tempo) / (double)CLOCKS_PER_SEC);
     
     getTracejado();
     
@@ -243,6 +245,3 @@ void getTracejado(void){
     printf("\n\n-----------------------------------------------------------------\n");
     printf("-----------------------------------------------------------------\n\n");
 }
-
-
-//https://gist.github.com/marcoscastro/60f8f82298212e267021
